@@ -1,6 +1,6 @@
 {
   "name": "@ntindle/openclaw-tasks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Persistent task and plan tracking plugin for OpenClaw",
   "type": "module",
   "main": "index.ts",
