@@ -69,9 +69,20 @@ git push --tags
 gh release create $(git describe --tags --abbrev=0) --generate-notes
 ```
 
-## npm 2FA
+## npm 2FA / Browser Authentication
 
-When publishing, npm will prompt for browser authentication if you have 2FA enabled. A URL will be displayed - open it in your browser to complete authentication.
+When publishing, npm uses browser-based authentication:
+
+1. The script will display a URL like:
+   ```
+   Authenticate your account at:
+   https://www.npmjs.com/auth/cli/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   ```
+2. Open the URL in your browser
+3. Complete 2FA if prompted
+4. Return to terminal — publish will complete automatically
+
+The release scripts handle this automatically. Just follow the browser prompt when it appears.
 
 ## Troubleshooting
 
