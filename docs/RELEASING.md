@@ -2,7 +2,31 @@
 
 This document describes how to cut a new release of `@ntindle/openclaw-tasks`.
 
-## Prerequisites
+## Release Methods
+
+### Option 1: GitHub Actions (Recommended)
+
+Trigger a release from GitHub without any local setup:
+
+1. Go to [Actions → Publish to npm](https://github.com/ntindle/openclaw-tasks/actions/workflows/publish.yml)
+2. Click "Run workflow"
+3. Select version bump type (patch/minor/major)
+4. Click "Run workflow"
+
+This automatically:
+- Runs tests
+- Bumps version
+- Publishes to npm with provenance attestation
+- Pushes version commit and tag
+- Creates GitHub release with auto-generated notes
+
+**Setup required**: Add `NPM_TOKEN` secret in [repo settings](https://github.com/ntindle/openclaw-tasks/settings/secrets/actions)
+- Create token at https://www.npmjs.com/settings/ntindle/tokens
+- Type: "Granular Access Token" → Automation → read/write packages
+
+### Option 2: Local Release
+
+#### Prerequisites
 
 1. **npm login**: You must be logged into npm as `ntindle`
    ```bash
@@ -20,7 +44,7 @@ This document describes how to cut a new release of `@ntindle/openclaw-tasks`.
    git status  # Should be clean
    ```
 
-## Quick Release
+#### Quick Release
 
 For most releases (patch version bump):
 
