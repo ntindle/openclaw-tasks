@@ -1,0 +1,47 @@
+{
+  "id": "tasks",
+  "name": "Tasks",
+  "description": "Persistent task and plan tracking with dependency management. Survives context compaction.",
+  "uiHints": {
+    "tasksDir": {
+      "label": "Tasks Directory",
+      "placeholder": "tasks",
+      "help": "Directory for task JSON files (relative to workspace)"
+    },
+    "plansDir": {
+      "label": "Plans Directory", 
+      "placeholder": "plans",
+      "help": "Directory for plan markdown files (relative to workspace)"
+    },
+    "autoInject": {
+      "label": "Auto-Inject Active Tasks",
+      "help": "Inject active task summary into context on session start"
+    },
+    "autoSaveOnCompaction": {
+      "label": "Auto-Save on Compaction",
+      "help": "Automatically save task state when context is about to compact"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "tasksDir": {
+        "type": "string",
+        "default": "tasks"
+      },
+      "plansDir": {
+        "type": "string", 
+        "default": "plans"
+      },
+      "autoInject": {
+        "type": "boolean",
+        "default": true
+      },
+      "autoSaveOnCompaction": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}

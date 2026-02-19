@@ -1,0 +1,31 @@
+{
+  "name": "@openclaw/tasks",
+  "version": "0.1.0",
+  "description": "Persistent task and plan tracking plugin for OpenClaw",
+  "type": "module",
+  "main": "index.ts",
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "tasks",
+    "planning",
+    "project-management"
+  ],
+  "author": "ntindle",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ntindle/openclaw-tasks"
+  },
+  "peerDependencies": {
+    "openclaw": "*"
+  },
+  "devDependencies": {
+    "@sinclair/typebox": "^0.32.35"
+  }
+}
