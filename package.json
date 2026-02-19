@@ -4,6 +4,13 @@
   "description": "Persistent task and plan tracking plugin for OpenClaw",
   "type": "module",
   "main": "index.ts",
+  "scripts": {
+    "test": "bun test",
+    "ci": "bun test",
+    "release": "npm whoami && bun run ci && npm version patch && npm publish --access public && git push && git push --tags && gh release create $(git describe --tags --abbrev=0) --generate-notes",
+    "release:minor": "npm whoami && bun run ci && npm version minor && npm publish --access public && git push && git push --tags && gh release create $(git describe --tags --abbrev=0) --generate-notes",
+    "release:major": "npm whoami && bun run ci && npm version major && npm publish --access public && git push && git push --tags && gh release create $(git describe --tags --abbrev=0) --generate-notes"
+  },
   "openclaw": {
     "extensions": [
       "./index.ts"
