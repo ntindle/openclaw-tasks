@@ -15,17 +15,17 @@ on:
           - minor
           - major
 
+permissions:
+  id-token: write   # Required for npm OIDC
+  contents: write   # Required for pushing version commits
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write  # Required for npm provenance / OIDC
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
       
       - uses: oven-sh/setup-bun@v2
         with:
@@ -33,7 +33,7 @@ jobs:
       
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
       
       - name: Install dependencies
@@ -52,10 +52,9 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: npm version ${{ inputs.version }} -m "Release %s"
       
-      - name: Publish to npm with provenance
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Publish using OIDC - no token needed!
+      - name: Publish to npm
+        run: npm publish --access public
       
       # For workflow_dispatch: push version commit and create release
       - name: Push changes

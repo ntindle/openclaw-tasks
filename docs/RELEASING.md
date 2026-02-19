@@ -20,9 +20,14 @@ This automatically:
 - Pushes version commit and tag
 - Creates GitHub release with auto-generated notes
 
-**Setup required**: Add `NPM_TOKEN` secret in [repo settings](https://github.com/ntindle/openclaw-tasks/settings/secrets/actions)
-- Create token at https://www.npmjs.com/settings/ntindle/tokens
-- Type: "Granular Access Token" → Automation → read/write packages
+**One-time setup**: Configure Trusted Publisher on npm (no tokens needed!)
+1. Go to <https://www.npmjs.com/package/@ntindle/openclaw-tasks/access>
+2. Under "Trusted Publisher" → Select "GitHub Actions"
+3. Fill in:
+   - Organization/user: `ntindle`
+   - Repository: `openclaw-tasks`
+   - Workflow filename: `publish.yml`
+4. Save
 
 ### Option 2: Local Release
 
